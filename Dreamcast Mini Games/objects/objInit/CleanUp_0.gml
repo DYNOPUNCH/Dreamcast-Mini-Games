@@ -1,0 +1,3 @@
+/// @description
+
+delete htmlButton;
