@@ -105,6 +105,7 @@
     {"id":{"name":"objHealth","path":"objects/objHealth/objHealth.yy",},},
     {"id":{"name":"objInit","path":"objects/objInit/objInit.yy",},},
     {"id":{"name":"objPrompt","path":"objects/objPrompt/objPrompt.yy",},},
+    {"id":{"name":"objSCDM","path":"objects/objSCDM/objSCDM.yy",},},
     {"id":{"name":"objScoreRenderer","path":"objects/objScoreRenderer/objScoreRenderer.yy",},},
     {"id":{"name":"objUlala","path":"objects/objUlala/objUlala.yy",},},
     {"id":{"name":"rmHTMLRoom","path":"rooms/rmHTMLRoom/rmHTMLRoom.yy",},},
