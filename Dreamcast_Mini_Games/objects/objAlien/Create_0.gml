@@ -1,0 +1,5 @@
+/// @description 
+enum alienState
+{
+		
+}
