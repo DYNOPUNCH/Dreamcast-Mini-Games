@@ -13,5 +13,3 @@ enum actionPrompts
 
 currentPrompt = -1;
 userAction = -1;
-
-promptStream = [1, 2, 3, 4]

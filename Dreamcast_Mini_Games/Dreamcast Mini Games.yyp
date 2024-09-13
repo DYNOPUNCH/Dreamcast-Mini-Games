@@ -455,6 +455,7 @@
     {"id":{"name":"input_x","path":"scripts/input_x/input_x.yy",},},
     {"id":{"name":"input_xy","path":"scripts/input_xy/input_xy.yy",},},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},},
+    {"id":{"name":"scrTimer","path":"scripts/scrTimer/scrTimer.yy",},},
     {"id":{"name":"scrUILite","path":"scripts/scrUILite/scrUILite.yy",},},
     {"id":{"name":"sprAlien_Die","path":"sprites/sprAlien_Die/sprAlien_Die.yy",},},
     {"id":{"name":"sprAlien_Down","path":"sprites/sprAlien_Down/sprAlien_Down.yy",},},
