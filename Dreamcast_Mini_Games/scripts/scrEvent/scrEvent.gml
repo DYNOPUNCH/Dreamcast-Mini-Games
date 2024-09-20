@@ -4,10 +4,17 @@
 // the Event function is a function pointer that is ran to  run every frame as the event is being ran
 // the condition fucntion is the qualifier to move on to the next event
 
-function EventNode(_eventFunction, _condition) constructor
+function branchNode(_eventFunction, _conditionFunction)
+{
+	conditionBranch = _eventFunction;
+	functionBranch = _conditionFunction;
+}
+
+
+function EventNode(_eventFunction, _conditionFunction) constructor
 {
 	eventFunction = _eventFunction;
-	condition = _condition;
+	condition = _conditionFunction;
 	next = noone;
 	
 	conditionBranch = [];
@@ -22,9 +29,9 @@ function event() constructor
 	size = 0;
 	
 	// Adds event to linked list and returns it's reference.
-	function addEvent(_eventFunction = noone, _condition = noone)
+	function addEvent(_eventFunction = noone, _conditionFunction = noone)
 	{
-		var newEvent = new EventNode(_eventFunction, _condition);
+		var newEvent = new EventNode(_eventFunction, _conditionFunction);
 		
 		if(head == noone)
 			head = newEvent;
@@ -43,9 +50,9 @@ function event() constructor
 		return newEvent;
 	}
 	
-	function insertEvent(_index = 0, _isBranch = false, _eventFunction = noone, _condition = noone) 
+	function insertEvent(_index = 0, _isBranch = false, _eventFunction = noone, _conditionFunction = noone) 
 	{
-	    var newEvent = new EventNode(_eventFunction, _condition);
+	    var newEvent = new EventNode(_eventFunction, _conditionFunction);
 
 	    if (head == noone) 
 	        head = newEvent;
@@ -70,7 +77,7 @@ function event() constructor
 					else 
 					{
 	                    array_push(current.functionBranch, _eventFunction);
-	                    array_push(current.conditionBranch, _condition);
+	                    array_push(current.conditionBranch, _conditionFunction);
 	                    show_debug_message("Branch Inserted!");
 	                }
 					
@@ -100,43 +107,36 @@ function event() constructor
 	}
 	
 	// Runs active events
-	function runEventChain()
-	{
-		var current = head;
+	function runEventChain() {
+	    var current = head;
+
+	    while (current) {
+	        // Skip the event if the condition is true
 		
-		while(current)
-		{
-			if(current.condition == true)
-			{
-				current = current.next;	
-				continue;
-			}
-			else
-			{
-				
-			if(array_length(current.conditionBranch) != 0)
-			{
-				for(var i = 0; i < array_length(current.conditionBranch); ++i)
-				{
-					if(current.conditionBranch[i] == true)
-					{
-						current.functionBranch[i]();
-					}
-					
-					break;
-				}
-			}
 			
-			if(current.eventFunction != noone)
-			{
-				current.eventFunction();
-				break;
-			}
-			
-			}
-			
-			current = current.next;	
-		}
+	        if (current.condition() == true) {
+	            current = current.next;
+	            continue;
+	        }
+
+	        // Check branching conditions if there are any
+	        if (array_length(current.conditionBranch) != 0) {
+	            for (var i = 0; i < array_length(current.conditionBranch); ++i) {
+	                if (current.conditionBranch[i]() == true) {
+	                    current.functionBranch[i]();  // Run the branch's function
+	                    return;  // Exit the chain after running a branch function
+	                }
+	            }
+	        }
+
+	        // Run the event function if no branch is taken and it exists
+	        if (current.eventFunction != noone) {
+	            current.eventFunction();
+	            return;  // Exit the chain after running the main event
+	        }
+
+	        current = current.next;
+	    }
 	}
 	
     // Clean up all event nodes

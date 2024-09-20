@@ -132,8 +132,8 @@ function printFunc2()
 	show_debug_message("this works also!");
 }
 
-gameEvents.addEvent(printFunc, );
+gameEvents.addEvent(printFunc, startTimer.runTimer);
 
 
-gameEvents.addEvent(printFunc, false);
-gameEvents.insertEvent(1, true, printFunc2, 1 + 1 == 3);
+gameEvents.addEvent(printFunc2, function(){return false});
+//gameEvents.insertEvent(1, true, printFunc2, switchTimer.runTimer);
