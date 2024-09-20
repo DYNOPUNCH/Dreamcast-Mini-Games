@@ -10,7 +10,8 @@ enum ulalaState
 	ULALA_SHOOT = 5,
 	ULALA_HOLD = 6,
 	ULALA_HURT = 7,
-	ULALA_DIE = 8
+	ULALA_DIE = 8,
+	ULALA_WIN = 9
 }
 
 currentState = ulalaState.ULALA_IDLE;

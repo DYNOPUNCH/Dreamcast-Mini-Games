@@ -1,5 +1,5 @@
 /// @description 
-
+/*
 //state for when the game is paused
 if (currentGameState == gameState.GAME_PAUSE) 
 {
@@ -10,6 +10,10 @@ else if (currentGameState == gameState.GAME_START)
 {
 	if(startTimer.runTimer() == true)
 	{
+		// Randomly pick a pattern.
+		
+		changePattern();
+		
 		startTimer.resetTimer();
 		currentGameState = gameState.GAME_SWITCH_PROMPT;
 	}
@@ -22,6 +26,8 @@ else if (currentGameState == gameState.GAME_SWITCH_PROMPT)
 		switchTimer.resetTimer();
 		
 		// Check who's turn it is and chnage the state accordingly.
+		// Alien should always go first.
+		
 		if(alienTurn == true)
 			currentGameState = gameState.GAME_ALIEN_PROMPT;
 		else
@@ -59,26 +65,50 @@ else if (currentGameState == gameState.GAME_ALIEN_PROMPT)
 // state for Ulala's copy cat prompt
 else if (currentGameState == gameState.GAME_ULALA_PROMPT) 
 {
+	// Setup timer and counts for ulala's part.
 	if(ulalaTimer.runTimer() == true)
 	{
-		ulalaObject.currentState = ulalaState.ULALA_IDLE;
+		patternIndex = 0;
+		currentGameState = gameState.GAME_ULALA_LOSE;
 		ulalaTimer.resetTimer();
-		currentGameState = gameState.GAME_SWITCH_PROMPT;
 	}
 	
-	ulalaPatternStates();
+	// Manage success and error of the prompts.
+	if()
+	{
+		patternIndex++;
+	}
+	
+	if(ulalaPatternStates() == currentPattern[patternIndex])
+	{
+		patternIndex = 0;
+		currentGameState = gameState.GAME_ULALA_LOSE;
+		ulalaTimer.resetTimer();
+	}
+	
+	// If you succeed in doing the prompts change state to win state.
+	if(patternIndex == array_length(currentPattern))
+	{
+		patternIndex = 0;
+		currentGameState = gameState.GAME_ULALA_WIN;
+		ulalaTimer.resetTimer();
+	}
+	
+
 	
     show_debug_message("Ulala Prompt");
 } 
 // state for if Ulala did it wrong
 else if (currentGameState == gameState.GAME_ULALA_WIN) 
 {
-    
+	ulalaObject.currentState = ulalaState.ULALA_HURT;
+    changePattern();
 }
 // state for if Ulala misses
 else if (currentGameState == gameState.GAME_ULALA_LOSE) 
 {
-    
+	ulalaObject.currentState = ulalaState.ULALA_HURT;
+    changePattern();
 } 
 // State for if you run out of hearts (check this at the end of ulala losing
 else if (currentGameState == gameState.GAME_GAMEOVER) 
@@ -89,3 +119,6 @@ else
 {
     
 }
+*/
+
+gameEvents.runEventChain();

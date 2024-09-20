@@ -37,6 +37,10 @@ switch(currentState)
     case ulalaState.ULALA_DIE:
         sprite_index = sprUlala_Die;
         break;
+		
+	case ulalaState.ULALA_WIN:
+        sprite_index = sprUlala_Win;
+        break;
 
     default:
         // Handle any unexpected states

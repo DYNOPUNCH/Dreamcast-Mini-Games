@@ -31,8 +31,6 @@ promptTimer = new timer(1);
 // Variable that dictates who's turn it is.
 alienTurn = true;
 
-promptFlash = true;
-
 // Variable that stores the game state.
 currentGameState = gameState.GAME_START;
 
@@ -42,9 +40,11 @@ pauseState = noone;
 //Dance Patterns
 pattern = [0, 1, 2, 3];
 
-currentPattern = pattern;
+currentPattern = noone;
 
 patternIndex = 0;
+
+promptBuffer = actionPrompts.PROMPT_NULL;
 
 function alienPatternStates(_state)
 {
@@ -78,17 +78,62 @@ function ulalaPatternStates()
 {
 	
 	if(input_check_pressed("up"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_UP;
+		return actionPrompts.PROMPT_UP;
+	}
 	else if(input_check_pressed("right"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_RIGHT;
+		return actionPrompts.PROMPT_RIGHT;
+	}
 	else if(input_check_pressed("down"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_DOWN;
+		return actionPrompts.PROMPT_DOWN;
+	}
 	else if(input_check_pressed("left"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_LEFT;
+		return actionPrompts.PROMPT_LEFT;
+	}
 	else if(input_check_pressed("accept"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_HOLD;
+		return actionPrompts.PROMPT_A;
+	}
 	else if(input_check_pressed("cancel"))
+	{
 		ulalaObject.currentState = ulalaState.ULALA_SHOOT;
-	
+		return actionPrompts.PROMPT_B;
+	}
+	else
+	{
+		ulalaObject.currentState = ulalaState.ULALA_IDLE;
+		return actionPrompts.PROMPT_NULL;
+	}
 }
 
+function changePattern()
+{
+	currentPattern = choose(pattern);
+}
+
+gameEvents = new event();
+
+
+function printFunc()
+{
+	show_debug_message("It works!");
+}
+
+function printFunc2()
+{
+	show_debug_message("this works also!");
+}
+
+gameEvents.addEvent(printFunc, );
+
+
+gameEvents.addEvent(printFunc, false);
+gameEvents.insertEvent(1, true, printFunc2, 1 + 1 == 3);
