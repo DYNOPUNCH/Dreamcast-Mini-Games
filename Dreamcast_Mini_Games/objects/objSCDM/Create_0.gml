@@ -132,8 +132,6 @@ function printFunc2()
 	show_debug_message("this works also!");
 }
 
-gameEvents.addEvent(printFunc, startTimer.runTimer);
-
-
-gameEvents.addEvent(printFunc2, function(){return false});
-//gameEvents.insertEvent(1, true, printFunc2, switchTimer.runTimer);
+gameEvents.addEvent(function(){show_debug_message("Game Start")}, startTimer.runTimer);
+gameEvents.addEvent(function(){show_debug_message("Switch")}, switchTimer.runTimer);
+gameEvents.addEvent(function(){show_debug_message("Alien")}, alienTimer.runTimer);
