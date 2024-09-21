@@ -13,3 +13,6 @@ delete gameoverTimer;
 gameEvents.eventClean();
 delete gameEvents;
 
+musicSys.audioClean()
+delete musicSys;
+

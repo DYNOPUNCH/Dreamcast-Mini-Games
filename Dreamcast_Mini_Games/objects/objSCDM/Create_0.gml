@@ -135,3 +135,45 @@ function printFunc2()
 gameEvents.addEvent(function(){show_debug_message("Game Start")}, startTimer.runTimer);
 gameEvents.addEvent(function(){show_debug_message("Switch")}, switchTimer.runTimer);
 gameEvents.addEvent(function(){show_debug_message("Alien")}, alienTimer.runTimer);
+
+noteArray = 
+[
+1,0,0,0,
+2,0,0,0,
+2,0,0,0,
+3,0,0,0,
+1,0,0,0,
+3,0,0,0,
+1,0,0,0,
+2,0,0,0,
+
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+2,0,0,0,
+2,0,0,0,
+2,0,0,0,
+1,0,0,0,
+1,0,0,0,
+
+1,0,0,0,
+3,0,0,0,
+1,0,0,0,
+1,0,0,0,
+3,0,0,0,
+3,0,0,0,
+1,0,0,0,
+1,0,0,0,
+
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+1,0,0,0,
+];
+
+musicSys = new rhythmSystem(musTense_0_00, noteArray, 8, 110,);
+musicSys.initBeats();

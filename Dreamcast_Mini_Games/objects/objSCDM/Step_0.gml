@@ -122,3 +122,4 @@ else
 */
 
 gameEvents.runEventChain();
+musicSys.runSystem();
