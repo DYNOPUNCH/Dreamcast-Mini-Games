@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprAlien_Hold",
-    "path":"sprites/sprAlien_Hold/sprAlien_Hold.yy",
+    "name":"sprAlien_Idle",
+    "path":"sprites/sprAlien_Idle/sprAlien_Idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -482,6 +482,7 @@
     {"id":{"name":"scrScripting","path":"scripts/scrScripting/scrScripting.yy",},},
     {"id":{"name":"scrTimer","path":"scripts/scrTimer/scrTimer.yy",},},
     {"id":{"name":"scrUILite","path":"scripts/scrUILite/scrUILite.yy",},},
+    {"id":{"name":"shBlackout","path":"shaders/shBlackout/shBlackout.yy",},},
     {"id":{"name":"musBPMTest_0_00","path":"sounds/musBPMTest_0_00/musBPMTest_0_00.yy",},},
     {"id":{"name":"musCrazyTaxiOne","path":"sounds/musCrazyTaxiOne/musCrazyTaxiOne.yy",},},
     {"id":{"name":"musHit_VMUDrop","path":"sounds/musHit_VMUDrop/musHit_VMUDrop.yy",},},

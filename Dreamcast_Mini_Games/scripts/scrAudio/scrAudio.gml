@@ -98,8 +98,14 @@ function songContext() constructor
 		#region DEBUG TOOLS
 		
 		// Check if the key has been tapped.
-		if(debug_mode)
+		if(keyboard_check_pressed(ord("P")))
 		{
+			if(currentAudioState == audioState.PROCESSING)
+				currentAudioState = audioState.PAUSED;
+			else if(currentAudioState == audioState.PAUSED)
+				currentAudioState = audioState.PROCESSING;
+		}
+			
 		if(keyboard_check(vk_left))
 			if(audio_sound_get_track_position(audioProcessing) - 1.0 > 0)
 			{
@@ -123,7 +129,7 @@ function songContext() constructor
 				audio_sound_set_track_position(audioProcessing, loopTime);
 				songPosition = audio_sound_get_track_position(audioProcessing);	
 			}
-		}
+
 		// See if either key has been held for an amount of time.
 		
 		if(keyboard_check(vk_left) || keyboard_check(vk_right)) 
@@ -163,12 +169,19 @@ function songContext() constructor
 		switch(currentAudioState)
 		{
 			case audioState.PROCESSING:
+			
+				audio_resume_sound(audioProcessing)
 				// Pitch has to be normal in processing mode.
 				audio_sound_pitch(audioProcessing, 1.0);
 				// Process the audio like normal allowing for on the spot updates.
 				if(audio_sound_get_gain(audioProcessing) != songVolume)
 					audio_sound_gain(audioProcessing, songVolume, 0);
 				break;
+			case audioState.PAUSED:
+					
+				audio_pause_sound(audioProcessing);
+				
+				break;	
 			case audioState.FADE_IN:
 			
 				// Setup audio for fade in.

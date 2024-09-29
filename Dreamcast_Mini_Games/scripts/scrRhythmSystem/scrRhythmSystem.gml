@@ -214,16 +214,48 @@ function rhythmSystem(_song, _pattern = [], _barCount = 8, _bpm = 130, _timeSign
 	
 	left = 0;
 	right = 0;
-	beat_render = true;
+	cursor = 0;
+	
 	
 	function levelCreator(_x, _y)
 	{
-		draw_sprite(sprNavArrows, 0,_x, _y);
+		if(keyboard_check_pressed(ord("1")))
+		{
+			left -= 8;
+			
+			if(left < 0)
+				left = 0;
+		}
+		
+		if(keyboard_check_pressed(ord("2")))
+		{
+			left += 8;
+			
+			if(left > array_length(pattern))
+				left = array_length(pattern) - 8;
+		}
+		
+		// draw the notes
+		
+		var drawTrace = 0;
+		var spread = 50;
+		
+		draw_sprite(sprNavArrows, 0, _x, _y);
+		drawTrace += spread;
 		
 		for(var i = 0; i < 8 && right < array_length(pattern); i++)
 		{
+			if(cursor == i)
+				draw_rectangle(_x + drawTrace, _y, _x + 16 + drawTrace, _y + 16, false);
 			
+			shader_set(shBlackout)
+			draw_sprite(sprNavArrows, 1, _x + drawTrace, _y);
+			shader_reset();
+			draw_sprite(sprPrompt, pattern[left + i], _x + drawTrace, _y + 20);
+			drawTrace += spread;
 		}
+		
+		draw_sprite(sprNavArrows, 2, _x + drawTrace, _y);
 	}
 }
 
