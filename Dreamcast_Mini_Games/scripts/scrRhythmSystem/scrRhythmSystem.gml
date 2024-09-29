@@ -77,7 +77,19 @@ function timeSigniture(_top, _bottom) constructor
 	bottom = _bottom;
 }
 
-function rhythmSystem(_song, _pattern, _barCount = 8, _bpm = 130, _timeSigniture = new timeSigniture(4, 4)) constructor
+function generatePattern(_barCount = 1, _tmNumerator = 4, _tmDenominator = 4)
+{
+	var tempPattern = [];
+	
+	for(var i = 0; i < _barCount * (_tmDenominator * _tmNumerator); i++)
+	{
+		array_push(tempPattern, 0);	
+	}
+	
+	return tempPattern;
+}
+
+function rhythmSystem(_song, _pattern = [], _barCount = 8, _bpm = 130, _timeSigniture = new timeSigniture(4, 4)) constructor
 {
 	music = new songContext();
 	sfx = new sfxContext();
@@ -90,7 +102,11 @@ function rhythmSystem(_song, _pattern, _barCount = 8, _bpm = 130, _timeSigniture
 
 	scoreText = "---";
 	
-	pattern = _pattern;
+	if(array_length(_pattern) == 0)
+		pattern = generatePattern(_barCount, _timeSigniture.top, _timeSigniture.bottom);
+	else
+		pattern = _pattern;
+		
 	beatObjects = [];
 	
 	period = 0.0;
@@ -120,6 +136,7 @@ function rhythmSystem(_song, _pattern, _barCount = 8, _bpm = 130, _timeSigniture
 		if(input_check_pressed("accept"))
 		{
 			sfx.playSFX(sndClap);
+			
 			for(var i = 0; i < array_length(beatObjects); i++)
 				beatObjects[i].detectStep();
 		}
@@ -179,7 +196,7 @@ function rhythmSystem(_song, _pattern, _barCount = 8, _bpm = 130, _timeSigniture
 			beatObjects[i].drawSelf();
 
 		// Draw Score
-		draw_set_color(c_white);
+		draw_set_color(c_white); 
 		draw_set_font(fntStrongGamer);
 		draw_set_halign(fa_middle);
 		draw_set_valign(fa_center);
@@ -194,4 +211,19 @@ function rhythmSystem(_song, _pattern, _barCount = 8, _bpm = 130, _timeSigniture
 		for(var i = 0; i < array_length(beatObjects); i++)
 			delete beatObjects[i];
 	}
+	
+	left = 0;
+	right = 0;
+	beat_render = true;
+	
+	function levelCreator(_x, _y)
+	{
+		draw_sprite(sprNavArrows, 0,_x, _y);
+		
+		for(var i = 0; i < 8 && right < array_length(pattern); i++)
+		{
+			
+		}
+	}
 }
+

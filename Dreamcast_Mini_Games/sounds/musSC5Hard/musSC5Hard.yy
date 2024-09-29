@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"musSC5Hard",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":126.72,
+  "name":"musSC5Hard",
+  "parent":{
+    "name":"OST",
+    "path":"folders/Sounds/SpaceChannel5/OST.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"musSC5Hard.ogg",
+  "type":0,
+  "volume":1.0,
+}

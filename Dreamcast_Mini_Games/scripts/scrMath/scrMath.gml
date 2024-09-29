@@ -1,28 +1,30 @@
 
 // takes a minimum Value and Maximum value and normalizes it to be 
-function normalize(_value, _min, _max) {
+function normalize(_value, _min, _max) 
+{
 	// Normalizes a value between _min and _max.
     return (_value - _min) / (_max - _min);
 }
 
-function oscillate(_value, _speed) {
-    // t is the input variable (e.g., time or any parameter affecting the oscillation)
-    // We'll use the sine function to create oscillation between -1 and 1
+// The intention is to oscilate a value but this probably need to be refactored as a class due to no argument pointers.
+function oscillate(_value, _speed) 
+{
 	_value += 0.1;
     var sine_wave = sin(_value);
 
     // Scale and shift the sine_wave to oscillate between 0 and 2
-    var oscillation = (sine_wave + 1.0) * 1.0; // The multiplier can be adjusted to change the amplitude
-	show_debug_message(oscillation);
+    var oscillation = (sine_wave + 1.0) * 1.0;
 
     return oscillation;
 }
 
+// Returns true if a value is in a given range.
 function inRange(_number, _minRange, _maxRange)
 {
     return (_number >= _minRange) && (_number <= _maxRange);
 }
 
+// The intention is to have a number wrap around like a stack overflow
 function numberWrap(_min, _max, number)
 {
 	var displacement = abs(_min);
@@ -34,6 +36,7 @@ function numberWrap(_min, _max, number)
 	// TODO: Finish
 }
 
+// 2D vector math class
 function vector2D(_x = 0, _y = 0) constructor
 {
 	x = _x;
@@ -81,6 +84,7 @@ function vector2D(_x = 0, _y = 0) constructor
 	
 }
 
+// 3D vector math function
 function vector3D(_x = 0, _y = 0, _z = 0) constructor
 {
 	x = _x;

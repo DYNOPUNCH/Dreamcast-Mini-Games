@@ -3,7 +3,7 @@
 switch(currentState)
 {
     case alienState.ALIEN_IDLE:
-        sprite_index = sprAlien_Hold;
+        sprite_index = sprAlien_Idle;
         break;
 
     case alienState.ALIEN_UP:

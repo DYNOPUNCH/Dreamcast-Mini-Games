@@ -13,8 +13,8 @@
   "name":"objInit",
   "overriddenProperties":[],
   "parent":{
-    "name":"General",
-    "path":"folders/Objects/General.yy",
+    "name":"_General",
+    "path":"folders/Objects/_General.yy",
   },
   "parentObjectId":null,
   "persistent":true,

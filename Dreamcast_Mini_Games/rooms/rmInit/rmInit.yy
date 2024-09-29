@@ -24,8 +24,8 @@
   ],
   "name":"rmInit",
   "parent":{
-    "name":"General",
-    "path":"folders/Rooms/General.yy",
+    "name":"_General",
+    "path":"folders/Rooms/_General.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -54,17 +54,17 @@ function songContext() constructor
 		if(_audio == audio)
 			return; 
 			
-			var _pathParts = string_split(audio_get_name(_audio), "_");
-			var _joinParts = string_concat(_pathParts[array_length(_pathParts) - 2],".", _pathParts[array_length(_pathParts) - 1]);
-			var _loopPos = real(_joinParts);
+			//var _pathParts = string_split(audio_get_name(_audio), "_");
+			//var _joinParts = string_concat(_pathParts[array_length(_pathParts) - 2],".", _pathParts[array_length(_pathParts) - 1]);
+			//var _loopPos = real(_joinParts);
 			
 			audio = _audio;
 			songPosition = 0.0;
 			songLength = audio_sound_length(_audio);
-			songName = _pathParts[0];
-			startTime = _startTime;
-			loopTime = _loopPos;
-			songVolume = _songVolume;
+			//songName = _pathParts[0];
+			//startTime = _startTime;
+			//loopTime = _loopPos;
+			//songVolume = _songVolume;
 			
 			if(_enableSpatialAudio == false)
 				audioProcessing = audio_play_sound(_audio, 100, true, 0.0,,songPitch);
@@ -98,8 +98,9 @@ function songContext() constructor
 		#region DEBUG TOOLS
 		
 		// Check if the key has been tapped.
-		
-		if(keyboard_check_pressed(vk_left))
+		if(debug_mode)
+		{
+		if(keyboard_check(vk_left))
 			if(audio_sound_get_track_position(audioProcessing) - 1.0 > 0)
 			{
 				audio_sound_set_track_position(audioProcessing, audio_sound_get_track_position(audioProcessing) - 0.20);
@@ -111,7 +112,7 @@ function songContext() constructor
 				songPosition = audio_sound_get_track_position(audioProcessing);	
 			}
 		
-		if(keyboard_check_pressed(vk_right))
+		if(keyboard_check(vk_right))
 			if(audio_sound_get_track_position(audioProcessing) + 1.0 < audio_sound_length(audioProcessing))
 			{
 				audio_sound_set_track_position(audioProcessing, audio_sound_get_track_position(audioProcessing) + 0.20);
@@ -122,7 +123,7 @@ function songContext() constructor
 				audio_sound_set_track_position(audioProcessing, loopTime);
 				songPosition = audio_sound_get_track_position(audioProcessing);	
 			}
-			
+		}
 		// See if either key has been held for an amount of time.
 		
 		if(keyboard_check(vk_left) || keyboard_check(vk_right)) 
